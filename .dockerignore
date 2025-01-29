@@ -1,0 +1,37 @@
+# Exclude Python bytecode files
+__pycache__/
+*.py[cod]
+.cache/
+.idea/
+
+# Exclude virtual environments
+env/
+.venv/
+
+# Exclude logs and coverage reports
+*.log
+*.out
+*.coverage
+*.cover
+.coverage.*
+
+# Exclude local and development files
+*.db
+celerybeat.pid
+.DS_Store
+
+# Exclude version control system files
+.git*
+.gitignore
+.gitattributes
+
+# Exclude build and deployment artifacts
+build/
+dist/
+*.egg-info
+*.bak
+*.swp
+
+# Exclude Docker development-related files
+Dockerfile
+!readme.md

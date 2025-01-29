@@ -1,0 +1,146 @@
+[project]
+name = "images_converter"
+description = "A high-performance image conversion and resizing tool using multiprocessing."
+license = "MIT"
+requires-python = ">=3.11"
+readme = "README.md"
+
+authors = [
+  { name = "Maciej Januszewski", email = "maciek@mjanuszewski.pl" },
+]
+
+maintainers = [
+  { name = "Maciej Januszewski", email = "maciek@mjanuszewski.pl" },
+]
+
+keywords = [
+  "images",
+  "converter",
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+    "Topic :: Scientific/Engineering :: Image Processing",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities"
+]
+
+dependencies = [
+    "pillow >=10.0.0",
+    "pillow-heif >=0.12.0",
+    "tqdm >=4.66.0"
+]
+
+dynamic = ["version"]
+
+[project.scripts]
+images_converter = "main:convert_images"
+
+[tool.poetry]
+name = "images_converter"
+version = "1.0.0"
+description = "images_converter"
+authors = []
+readme = "README.md"
+homepage = "https://github.com/miodeqqq/images_converter"
+repository = "https://github.com/miodeqqq/images_converter"
+
+[tool.poetry.dependencies]
+python = ">=3.11, <4.0"
+pillow-heif = "^0.21.0"
+tqdm = "^4.67.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
+pylint = "^3.3.3"
+pytest = "^8.3.4"
+pytest-html = "^4.1.1"
+
+[tool.pytest.ini_options]
+addopts = "--maxfail=1 --disable-warnings --html=images_converter_tests_report.html --self-contained-html"
+
+[tool.pylint]
+disable = [
+    "C0114", # missing module docstring
+    "C0116", # missing function or method docstring
+    "C0103", # variable name doesn't conform to snake_case naming style
+    "R0801", # duplicated code
+    "W0703", # catching too general exception
+    "W0621", # redefining name from outer scope
+    "R0914", # too many local variables
+]
+
+[tool.pylint.messages_control]
+disable = [
+    "fixme",
+]
+
+[tool.pylint.format]
+max-line-length = 79
+
+[tool.pylint.design]
+max-args = 6
+max-attributes = 10
+max-branches = 12
+max-nested-blocks = 4
+max-public-methods = 15
+max-statements = 50
+
+[tool.pylint.similarities]
+min-similarity-lines = 4
+
+[tool.pylint.typecheck]
+ignored-modules = ["django", "flask", "pytest"]
+
+[tool.pylint.basic]
+good-names = ["i", "j", "k", "x", "y", "z", "_"]
+docstring-min-length = 10
+
+[tool.pylint.logging]
+logging-format-style = "new"
+
+[tool.pylint.reports]
+reports = "yes"
+msg-template = "{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}"
+
+[tool.black]
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | venv
+    | _build
+    | build
+    | dist
+    | apidoc
+    | static
+    | migrations
+  )/
+    # The following are specific to Black, you probably don't want those.
+    | blib2to3
+    | tests/data
+  # also separately exclude a file named foo.py in the root of the project
+  # | foo.py
+)
+'''
